@@ -1,0 +1,23 @@
+---
+kind: pipeline
+name: oauth-sdk-pipeline
+
+steps:
+  - name: "unit, build, package, publish"
+    image: davidiamyou/open-jdk-8:latest
+    environment:
+      ARTIFACTORY_CONTEXT_URL: https://artifactory.imulab.io/artifactory
+      ARTIFACTORY_REPO: gradle-dev-local
+      ARTIFACTORY_USERNAME:
+        from_secret: artifactory_username
+      ARTIFACTORY_PASSWORD:
+        from_secret: artifactory_password
+    commands:
+      - ./gradlew test
+      - ./gradlew build
+      - ./gradlew artifactoryPublish
+  - name: "notify"
+    image: plugins/gitter
+    settings:
+      webhook:
+        from_secret: gitter_webhok
