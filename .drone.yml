@@ -16,8 +16,3 @@ steps:
       - ./gradlew test
       - ./gradlew build
       - ./gradlew artifactoryPublish
-  - name: "notify"
-    image: plugins/gitter
-    settings:
-      webhook:
-        from_secret: gitter_webhok
