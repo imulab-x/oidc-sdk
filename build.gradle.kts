@@ -19,7 +19,7 @@ buildScan {
 }
 
 group = "io.imulab.x"
-version = "0.1.1"
+version = "0.1.2"
 
 repositories {
     maven(url = "https://artifactory.imulab.io/artifactory/gradle-dev-local/")
@@ -91,7 +91,7 @@ dependencies {
     implementation(platform("io.imulab.x:astrea-dependencies:3"))
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
-    api("io.imulab.x:oauth-sdk:0.1.1")
+    api("io.imulab.x:oauth-sdk:0.1.2")
 
     testImplementation("io.kotlintest:kotlintest-runner-junit5")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin")
