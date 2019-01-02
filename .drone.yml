@@ -7,8 +7,8 @@ steps:
     image: plugins/slack
     settings:
       webhook:
-        from_secret: slack_webhook_oauth_sdk
-      channel: oauth-sdk
+        from_secret: slack_webhook_oidc_sdk
+      channel: oidc-sdk
       template: >
         Build {{build.number}} started at {{build.started}}. View it at {{build.link}}
   - name: "unit, build, package, publish"
