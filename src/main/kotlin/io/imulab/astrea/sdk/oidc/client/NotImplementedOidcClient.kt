@@ -28,6 +28,7 @@ open class NotImplementedOidcClient : OidcClient {
     override val userInfoEncryptedResponseAlgorithm: JweKeyManagementAlgorithm by lazy(notImplemented)
     override val userInfoEncryptedResponseEncoding: JweContentEncodingAlgorithm by lazy(notImplemented)
     override val tokenEndpointAuthenticationMethod: String by lazy(notImplemented)
+    override val tokenEndpointAuthenticationSigningAlgorithm: JwtSigningAlgorithm by lazy(notImplemented)
     override val defaultMaxAge: Long by lazy(notImplemented)
     override val requireAuthTime: Boolean by lazy(notImplemented)
     override val defaultAcrValues: List<String> by lazy(notImplemented)

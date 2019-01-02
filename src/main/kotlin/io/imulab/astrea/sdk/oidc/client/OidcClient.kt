@@ -144,6 +144,13 @@ interface OidcClient : OAuthClient {
     val tokenEndpointAuthenticationMethod: String
 
     /**
+     * Optional. JWA that must be used for signing the JWT used to authenticate the client at the
+     * token endpoint for the private_key_jwt and client_secret_jwt authentication methods. Server
+     * should support RS256. none MUST NOT be used.
+     */
+    val tokenEndpointAuthenticationSigningAlgorithm: JwtSigningAlgorithm
+
+    /**
      * Optional. Specifies the end user must be actively authenticated if the end user is
      * authenticated longer ago than the number of seconds specified by this value. This
      * value can be override by the max_age parameter in the request. By default, the value
