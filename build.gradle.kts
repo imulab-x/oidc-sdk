@@ -19,7 +19,7 @@ buildScan {
 }
 
 group = "io.imulab.x"
-version = "0.1.2"
+version = "0.2.0"
 
 repositories {
     maven(url = "https://artifactory.imulab.io/artifactory/gradle-dev-local/")
@@ -49,6 +49,11 @@ tasks {
     test {
         useJUnitPlatform()
     }
+
+    register<Jar>("sourcesJar") {
+        from(sourceSets["main"].allSource)
+        classifier = "sources"
+    }
 }
 
 publishing {
@@ -58,6 +63,7 @@ publishing {
             artifactId = project.name
             version = project.version.toString()
             from(components["java"])
+            artifact(tasks["sourcesJar"])
             pom {
                 name.set(artifactId)
                 developers {
@@ -91,7 +97,7 @@ dependencies {
     implementation(platform("io.imulab.x:astrea-dependencies:3"))
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
-    api("io.imulab.x:oauth-sdk:0.1.2")
+    api("io.imulab.x:oauth-sdk:0.2.0")
 
     testImplementation("io.kotlintest:kotlintest-runner-junit5")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin")
