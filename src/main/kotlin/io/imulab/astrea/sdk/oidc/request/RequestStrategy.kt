@@ -42,7 +42,7 @@ import java.util.*
  * its signature. In the end, if everything goes well, a [JwtClaims] object representing the content
  * of the request object is returned.
  */
-class RequestStrategy(
+open class RequestStrategy(
     private val repository: CachedRequestRepository,
     private val httpClient: SimpleHttpClient,
     private val jsonWebKeySetStrategy: JsonWebKeySetStrategy,
@@ -62,7 +62,7 @@ class RequestStrategy(
         }
     }
 
-    private suspend fun doResolveRequest(request: String, requestUri: String, client: io.imulab.astrea.sdk.oidc.client.OidcClient): JwtClaims {
+    protected open suspend fun doResolveRequest(request: String, requestUri: String, client: io.imulab.astrea.sdk.oidc.client.OidcClient): JwtClaims {
         if (request.isNotEmpty()) {
             check(requestUri.isEmpty()) {
                 "request and request_uri cannot be used at the same time."
