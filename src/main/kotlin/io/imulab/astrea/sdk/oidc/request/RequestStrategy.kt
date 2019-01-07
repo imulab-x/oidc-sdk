@@ -157,7 +157,7 @@ open class RequestStrategy(
         return request
     }
 
-    private suspend fun processRequest(request: String, client: io.imulab.astrea.sdk.oidc.client.OidcClient): JwtClaims =
+    protected suspend fun processRequest(request: String, client: io.imulab.astrea.sdk.oidc.client.OidcClient): JwtClaims =
         verifySignature(
             request = decryptRequest(request, client),
             client = client
